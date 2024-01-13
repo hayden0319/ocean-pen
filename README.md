@@ -11,6 +11,7 @@
 </div>
 
 ## 功能概览
+
 现有功能：
 1. 登陆注册方式：邮箱+手机号码（登陆 / 注册等等）
 2. 支付：虎皮椒支付
@@ -27,8 +28,7 @@
 13. SD绘画：提示词，反向提示词，SD大模型选择，LoRA模型选择，提示词相关性，采样迭代步数，尺寸比例，生成数量，随机数种子
 14. 页面中英繁切换（适合海外用户）
     
-##计划功能
-👋
+##计划功能👋
 1. （更新中）SD绘画：咒语解析（选择图片，解析结果），以图生图，controlnet，tagcomplete（提示词补全功能）
 2. 视频转视频：视频转绘
 3. 企业知识库：训练AI机器人
@@ -95,7 +95,7 @@ redis7.0
   5.再添加管理端的包，添加之前先创建一个文件夹：public，创建好之后我们点进去，上传管理端前端的包
   6.点击宝塔里的网站，我们先设置用户端的吧，点开用户端的设置，有个网站目录，点进去，网站目录指向刚刚创建的public文件夹，运行目录指向刚刚解压出来的pc文件夹
   7.点击配置文件，配置文件添加以下内容
-  <code>
+
   location / {
        try_files $uri $uri/ /index.html?$query_string;
      }
@@ -117,17 +117,17 @@ location /PDF/ {
             root   /www/uploads/likeadmin-java/PDF/;       
             rewrite ^/PDF/(.*)$ /$1 break;   
         }
-</code>
+
+
 8.保存之后我们再点击ssl，添加证书，这一步跳过，按照我的方法是可以申请的，我没有解析成功。
 
 9.设置管理端的，点开管理端的设置，有个网站目录，点进去，网站目录指向刚刚创建的public文件夹，运行目录指向刚刚解压出来的admin文件夹
   10.点击配置文件，配置文件添加以下内容
-  <code>
+
   location / {
        try_files $uri $uri/ /index.html?$query_string;
      }
-   
-      # 添加以下代码块来设置反向代理
+     # 添加以下代码块来设置反向代理
      location /api/ {
          proxy_pass http://localhost:8624/;
          proxy_http_version 1.1;
@@ -147,7 +147,8 @@ location /PDF/ {
          proxy_send_timeout 86400s;
          proxy_buffering off;
      }
-     </code>
+  
+     
 第七步我们开始配置一下pdf以及语音tts的教程
 写真和PDF服务需要在服务器www目录下创建 uploads/likeadmin-java 两个文件夹。
 并且给予777权限   
