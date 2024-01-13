@@ -52,15 +52,6 @@
 - mj会员订阅账户
 - 其他：短信，邮件，支付，图床或者存储桶
 
-## 项目仓库
-- 前端源码： https://github.com/gptlink/gptlink-web
-- 部署脚本： https://github.com/gptlink/gptlink-deploy
-- 管理端源码： 新版开发中，敬请期待
-
-## 项目配置
-
-项目提供有限的权限控制功能，项目配置文件位于 `gptserver/.env`，如诺不存在此文件，将 `gptserver/.env.example` 更名为 `.env` 作为配置项进行使用，详细的配置说明 [点此查看](./docs/ENV.md)
-
 ## 部署
 一.服务器部署以及宝塔安装
 1.先准备好一台服务器（国内或者香港以及国外的，建议香港），服务器装centos的系统
@@ -75,83 +66,123 @@ Java一键部署
 redis7.0
 
 二、开始系统的部署
-第一步装java的版本：17.0.8
-第二步添加数据库，数据库的名称：aimpact，然后用户名和密码都设置成：aimpact
-第三步就是导入数据库文件了，数据库文件在每次的全量包里面，我们现在导入
-第四步创建java项目
-  1.我们先去宝塔里的文件创建一个oceanpen的文件夹
-    2.创建好之后，我们就上传后端的压缩包
-第五步去创建Java项目
-  1.创建项目之前我们先去宝塔里面的安全放开一下端口，记得服务器也要放开，两个端口：8624和8080，
-  2.创建java项目：aimpact，我们选择项目路，径项目路径选择刚刚上传的/aimpact/aimpact-java-1.0.0.jar文件，项目端口一定要改为8624，然后点击提交创建项目
-  3.创建Java项目：midjourney，我们选择项目路径，选择刚刚上传的java压缩包/midjourney/midjourney-proxy-pilot-3.6.0.jar，项目端口一定要改为8080，然后点击提交
-  4.在midjourney的Java项目里面选择域名管理，添加我给你授权的mj的域名。
-我们的Java项目创建成功。
-第六步添加PHP
-  1.我们先添加用户端的，选择纯静态就可以了
-  2.接下来添加管理端的，也是纯静态
-  3.创建完成之后就去网站的根目录上传对照域名的前端包，我现在开始上传
-  4.先添加用户端的包，添加之前先创建一个文件夹：public，创建好之后我们点进去，上传用户端前端的包
-  5.再添加管理端的包，添加之前先创建一个文件夹：public，创建好之后我们点进去，上传管理端前端的包
-  6.点击宝塔里的网站，我们先设置用户端的吧，点开用户端的设置，有个网站目录，点进去，网站目录指向刚刚创建的public文件夹，运行目录指向刚刚解压出来的pc文件夹
-  7.点击配置文件，配置文件添加以下内容
-<code>
-  location / {
-       try_files $uri $uri/ /index.html?$query_string;
-     }
-     location /api/ {
-         proxy_pass http://localhost:8624/;
-         proxy_http_version 1.1;
-         proxy_set_header Upgrade $http_upgrade;
-         proxy_set_header Connection "upgrade";
-         proxy_read_timeout 86400s;   
-        proxy_send_timeout 86400s;
-         proxy_buffering off;
-     }
+## 部署
+
+### 一. 服务器部署以及宝塔安装
+
+1. 准备一台服务器（国内、香港或国外的，建议香港），服务器安装CentOS系统。
+2. 准备三个域名：
+   - 用户端
+   - 管理端
+   - MJ的jar包连接后台管理的jar包的域名
+   
+   可以使用二级域名，部署前请发给授权商。
+3. 安装宝塔，使用以下地址：[宝塔官网](https://www.bt.cn/new/download.html)。
+   
+   安装完成后，确保以下应用已安装：
+   - Nginx 1.2.0
+   - MySQL 5.7
+   - Java（一键部署）
+   - Redis 7.0
+
+### 二. 系统部署
+
+#### 第一步：安装Java
+
+Java版本：17.0.8。
+
+#### 第二步：添加数据库
+
+数据库名称：`aimpact`。
+
+用户名和密码都设置为：`aimpact`。
+
+#### 第三步：导入数据库文件
+
+数据库文件包含在每次的全量包中，现在导入。
+
+#### 第四步：创建Java项目
+
+1. 在宝塔的文件管理中创建一个名为`oceanpen`的文件夹。
+2. 创建好之后，上传后端的压缩包。
+
+#### 第五步：创建Java项目
+
+1. 创建项目前先在宝塔的安全中放开两个端口：`8624`和`8080`（服务器也需放开这两个端口）。
+2. 创建Java项目`aimpact`，选择项目路径为上传的`/aimpact/aimpact-java-1.0.0.jar`文件，项目端口改为`8624`，然后提交创建项目。
+3. 创建Java项目`midjourney`，选择项目路径为上传的`/midjourney/midjourney-proxy-pilot-3.6.0.jar`文件，项目端口改为`8080`，然后提交。
+4. 在`midjourney`的Java项目中添加授权的MJ域名。
+
+Java项目创建完成。
+
+#### 第六步：添加PHP
+
+1. 添加用户端，选择纯静态。
+2. 添加管理端，同样选择纯静态。
+3. 创建完成后，上传对应域名的前端包到网站根目录。
+4. 添加用户端包，创建`public`文件夹，并上传用户端前端包。
+5. 添加管理端包，同样创建`public`文件夹，并上传管理端前端包。
+6. 设置用户端网站目录指向创建的`public`文件夹，运行目录指向解压的`pc`文件夹。
+7. 修改配置文件，添加以下内容：
+
+```nginx
+location / {
+    try_files $uri $uri/ /index.html?$query_string;
+}
+location /api/ {
+    proxy_pass http://localhost:8624/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 86400s;   
+    proxy_send_timeout 86400s;
+    proxy_buffering off;
+}
 location /voice/ {           
-            root   /www/uploads/likeadmin-java/voice/;       
-            rewrite ^/voice/(.*)$ /$1 break;   
-        }
-        
+    root /www/uploads/likeadmin-java/voice/;       
+    rewrite ^/voice/(.*)$ /$1 break;   
+}
 location /PDF/ {           
-            root   /www/uploads/likeadmin-java/PDF/;       
-            rewrite ^/PDF/(.*)$ /$1 break;   
-        }
+    root /www/uploads/likeadmin-java/PDF/;       
+    rewrite ^/PDF/(.*)$ /$1 break;   
+}
+```
 
-</code>
-8.保存之后我们再点击ssl，添加证书，这一步跳过，按照我的方法是可以申请的，我没有解析成功。
+8. SSL设置可以先跳过，按照方法是可申请的。
 
-9.设置管理端的，点开管理端的设置，有个网站目录，点进去，网站目录指向刚刚创建的public文件夹，运行目录指向刚刚解压出来的admin文件夹
-  10.点击配置文件，配置文件添加以下内容
-<code>
-  location / {
-       try_files $uri $uri/ /index.html?$query_string;
-     }
-     # 添加以下代码块来设置反向代理
-     location /api/ {
-         proxy_pass http://localhost:8624/;
-         proxy_http_version 1.1;
-         proxy_set_header Upgrade $http_upgrade;
-         proxy_set_header Connection "upgrade";
-         proxy_read_timeout 86400s;   
-         proxy_send_timeout 86400s;
-         proxy_buffering off;
-     }
-      # 添加以下代码块来设置反向代理
-     location /mj/ {
-         proxy_pass http://localhost:8080/mj/;
-         proxy_http_version 1.1;
-         proxy_set_header Upgrade $http_upgrade;
-         proxy_set_header Connection "upgrade";
-         proxy_read_timeout 86400s;   
-         proxy_send_timeout 86400s;
-         proxy_buffering off;
-     }
-</code>    
+9. 设置管理端，网站目录指向`public`文件夹，运行目录指向`admin`文件夹。
+10. 修改配置文件，添加以下内容：
 
-第七步我们开始配置一下pdf以及语音tts的教程
-写真和PDF服务需要在服务器www目录下创建 uploads/likeadmin-java 两个文件夹。
-并且给予777权限   
+```nginx
+location / {
+    try_files $uri $uri/ /index.html?$query_string;
+}
+location /api/ {
+    proxy_pass http://localhost:8624/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 86400s;   
+    proxy_send_timeout 86400s;
+    proxy_buffering off;
+}
+location /mj/ {
+    proxy_pass http://localhost:8080/mj/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+    proxy_read_timeout 86400s;   
+    proxy_send_timeout 86400s;
+    proxy_buffering off;
+}
+```
+
+#### 第七步：配置PDF及语音TTS服务
+
+在服务器`www`目录下创建`uploads/likeadmin-java`两个文件夹并赋予`777`权限。
+
+以上为部署指南，确保按照步骤操作，确保服务器与域名正常设置。
+
 ### 访问
 
 **项目访问**
