@@ -1,8 +1,6 @@
-# ocean-pen
-一个让人眼前一亮的商业版GPT源码
 <div align="center">
   <h1 align="center">OCEAN PEN</h1>
-  <p> 一个全功能的AI网站。</p>
+  <p> 一个全功能的AI 让人眼前一亮的商业版GPT源码。</p>
 
   [体验地址](./DEMO.md) · [演示图片](./docs/show/README.md) · [反馈](https://github.com/gptlink/gptlink/issues) · [微信加群](./docs/images/qrcode.png)
 
