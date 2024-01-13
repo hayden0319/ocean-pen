@@ -209,6 +209,6 @@ location /mj/ {
 常见问题汇总：[点击查看](./docs/FAQ.md)
 
 ## 微信交流群
-<img src="[https://raw.githubusercontent.com/gptlink/gptlink/master/docs/images/qrcode.png](http://qr.haydenstudio.hk/common/kf/redirect/?kid=207474)http://qr.haydenstudio.hk/common/kf/redirect/?kid=207474" width="300" />
+<img src="http://qr.haydenstudio.hk/common/kf/redirect/?kid=207474" width="300" />
 
 
