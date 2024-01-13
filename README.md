@@ -2,7 +2,7 @@
   <h1 align="center">OCEAN PEN</h1>
   <p> 一个全功能的AI 让人眼前一亮的商业版GPT源码。</p>
 
-  [体验地址](https://0oai.com) · [演示图片](./photo) · [反馈](https://github.com/gptlink/gptlink/issues) · [微信加群](./docs/images/qrcode.png)
+  [体验地址](https://0oai.com) · [演示图片](./photo.md)  · [微信加群](./docs/images/qrcode.png)
 
 
 
