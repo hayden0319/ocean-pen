@@ -95,7 +95,7 @@ redis7.0
   5.再添加管理端的包，添加之前先创建一个文件夹：public，创建好之后我们点进去，上传管理端前端的包
   6.点击宝塔里的网站，我们先设置用户端的吧，点开用户端的设置，有个网站目录，点进去，网站目录指向刚刚创建的public文件夹，运行目录指向刚刚解压出来的pc文件夹
   7.点击配置文件，配置文件添加以下内容
-
+<code>
   location / {
        try_files $uri $uri/ /index.html?$query_string;
      }
@@ -118,12 +118,12 @@ location /PDF/ {
             rewrite ^/PDF/(.*)$ /$1 break;   
         }
 
-
+</code>
 8.保存之后我们再点击ssl，添加证书，这一步跳过，按照我的方法是可以申请的，我没有解析成功。
 
 9.设置管理端的，点开管理端的设置，有个网站目录，点进去，网站目录指向刚刚创建的public文件夹，运行目录指向刚刚解压出来的admin文件夹
   10.点击配置文件，配置文件添加以下内容
-
+<code>
   location / {
        try_files $uri $uri/ /index.html?$query_string;
      }
@@ -147,8 +147,8 @@ location /PDF/ {
          proxy_send_timeout 86400s;
          proxy_buffering off;
      }
-  
-     
+</code>    
+
 第七步我们开始配置一下pdf以及语音tts的教程
 写真和PDF服务需要在服务器www目录下创建 uploads/likeadmin-java 两个文件夹。
 并且给予777权限   
