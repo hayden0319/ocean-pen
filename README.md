@@ -209,6 +209,6 @@ location /mj/ {
 常见问题汇总：[点击查看](./docs/FAQ.md)
 
 ## 微信交流群
-<img src="http://qr.haydenstudio.hk/common/kf/redirect/?kid=207474" width="300" />
+<img src="[http://qr.haydenstudio.hk/common/kf/redirect/?kid=207474](https://qr.haydenstudio.hk/console/upload/IMG_0122_9053.png)https://qr.haydenstudio.hk/console/upload/IMG_0122_9053.png" width="300" />
 
 
